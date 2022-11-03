@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "username": "amir",
+      "birthday": 985120200000,
+      "gender": 1,
+      "password": "Abc123?!",
+      "activity": true,
+      "province": {
+        "id": 4,
+        "name": "اصفهان"
+      },
+      "city": {
+        "id": 127,
+        "name": "اصفهان",
+        "slug": "اصفهان",
+        "province_id": 4
+      },
+      "id": 1
+    }
+  ]
+}

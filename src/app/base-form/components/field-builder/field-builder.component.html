@@ -1,0 +1,8 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="field.type">
+    <app-textbox *ngSwitchCase="'text'" [field]="field" [form]="form"></app-textbox>
+    <app-date-picker *ngSwitchCase="'date-picker'" [field]="field" [form]="form"></app-date-picker>
+    <app-radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></app-radio>
+  </div>
+</div>
+

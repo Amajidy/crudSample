@@ -1,0 +1,7 @@
+<div [formGroup]="form">
+  <mat-form-field style="text-align: right;">
+    <input matInput [matDatepicker]="picker6" [placeholder]="field.label" [formControlName]="field.name">
+    <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+    <mat-datepicker #picker6></mat-datepicker>
+  </mat-form-field>
+</div>

@@ -1,0 +1,7 @@
+<div [formGroup]="form">
+  <div [formGroupName]="field.name">
+    <div *ngFor="let opt of field.options">
+      <mat-checkbox class="example-margin" [formControlName]="opt.key">{{opt.label}}</mat-checkbox>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<table class="w-full">
+  <thead>
+    <th *ngFor="let item of header">
+      {{item.name}}
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+
+      <ng-template ngFor let-head [ngForOf]="header">
+        <td class="text-center" [attr.data-label]="head.name">
+            <ng-template [ngTemplateOutlet]="columnTemplates[head.col] || noCustomField"
+             [ngTemplateOutletContext]="{$implicit:item}">
+            </ng-template>
+            <ng-template #noCustomField>
+              {{item[head.col]}}
+            </ng-template>
+
+          <!-- </ng-container> -->
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>

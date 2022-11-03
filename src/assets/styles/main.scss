@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: vazir;
+  src: url('../font/vazir-font-v27.2.2-Fontjo.com/vazir-font-v27.2.2-Fontjo.com/Vazir-Medium.ttf');
+}
+*{
+  font-family: 'vazir';
+}

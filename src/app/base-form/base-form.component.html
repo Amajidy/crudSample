@@ -1,0 +1,8 @@
+<form [formGroup]="form" (submit)="onSubmit()" style="margin: 0 10px">
+  <div class="flex items-center flex-wrap gap-6 flex-row-reverse">
+    <div *ngFor="let item of formSchema">
+      <app-field-builder [field]="item" [form]="form"></app-field-builder>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" type="submit">submit</button>
+</form>

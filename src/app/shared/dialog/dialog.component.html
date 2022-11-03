@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <ng-container *ngIf="data.type === 'form'"></ng-container>
+  <app-base-form [formSchema]="data.form"></app-base-form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</div>

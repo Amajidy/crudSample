@@ -1,0 +1,88 @@
+<h1 mat-dialog-title>اضافه کردن کاربر</h1>
+<div mat-dialog-content dir="rtl">
+  <form [formGroup]="userDetail" (submit)="onSubmit()">
+    <div class="flex flex-wrap items-center gap-6">
+
+      <mat-form-field appearance="fill">
+        <mat-label>نام کاربری</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="text-align: right;">
+        <input matInput [matDatepicker]="picker6" placeholder="تاریخ تولد" formControlName="birthday">
+        <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+        <mat-datepicker #picker6></mat-datepicker>
+      </mat-form-field>
+
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <div class="flex items-center gap-4">
+          <mat-radio-button *ngFor="let item of key(gender); index as i" [value]="i + 1">{{persianGender[item]}}
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>استان</mat-label>
+        <mat-select formControlName="province">
+          <mat-option *ngFor="let city of cities" [value]="city">
+              {{city.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <mat-form-field appearance="fill">
+        <mat-label>استان</mat-label>
+        <input type="text" formControlName="province"
+          [matAutocomplete]="autoGroup"
+          matInput>
+        <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="displayFnCity">
+          <mat-option *ngFor="let city of cityOptions | async" [value]="city">
+            {{city.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" >
+        <mat-label>شهر</mat-label>
+        <input type="text" formControlName="city"
+          [matAutocomplete]="autoGroup2"
+          matInput>
+        <mat-autocomplete #autoGroup2="matAutocomplete" [displayWith]="displayFnCity" >
+          <mat-option *ngFor="let state of statesOptions | async" [value]="state">
+            {{state.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>شهر</mat-label>
+        <mat-select formControlName="city" [disabled]="!userDetail.get('province')?.value">
+          <mat-option *ngFor="let state of states" [value]="state">
+            {{state.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>رمز عبور</mat-label>
+        <input matInput type="password" formControlName="password"
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>تکرار رمز عبور</mat-label>
+        <input matInput type="password" formControlName="repassword">
+      </mat-form-field>
+
+      <mat-checkbox class="example-margin" formControlName="activity">وضعیت</mat-checkbox>
+
+    </div>
+    <button [disabled]="!userDetail.valid || !checkPassword" mat-raised-button color="primary"
+      type="submit">تایید</button>
+  </form>
+  <div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>لغو</button>
+</div>

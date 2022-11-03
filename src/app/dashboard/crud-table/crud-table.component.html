@@ -1,0 +1,42 @@
+<div class="mb-5">
+  <button mat-raised-button color="primary" (click)="addUser()">اضافه کردن</button>
+</div>
+<crud-table [column]="column" [data]="tableData | async">
+
+  <div crudTable="birthday">
+    <ng-template let-item>
+      {{item.birthday | persianDate}}
+    </ng-template>
+  </div>
+
+  <div crudTable="gender">
+    <ng-template let-item>
+      {{gender[item.gender]}}
+    </ng-template>
+  </div>
+
+  <div crudTable="activity">
+    <ng-template let-item>
+      <div class="w-5 h-5 rounded-full sm:mx-auto shadow-2xl" [class]="item.activity ? 'bg-green-500' : 'bg-red-500'"></div>
+    </ng-template>
+  </div>
+
+  <div crudTable="province">
+    <ng-template let-item>
+      {{item.province.name}}
+    </ng-template>
+  </div>
+
+  <div crudTable="action">
+    <ng-template let-item>
+      <div class="flex items-center gap-4 justify-center">
+        <span (click)="editUser(item)" class="cursor-pointer">
+          <mat-icon>edit</mat-icon>
+        </span>
+        <span class="cursor-pointer">
+          <mat-icon>delete</mat-icon>
+        </span>
+      </div>
+    </ng-template>
+  </div>
+</crud-table>

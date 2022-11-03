@@ -1,0 +1,6 @@
+<div [formGroup]="form">
+  <mat-form-field appearance="legacy" style="text-align: right;">
+    <mat-label>{{field.label}}</mat-label>
+    <input matInput [formControlName]="field.name" [type]="field.type" [placeholder]="field.label">
+  </mat-form-field>
+</div>
